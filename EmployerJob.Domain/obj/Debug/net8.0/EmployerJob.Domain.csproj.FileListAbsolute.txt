@@ -1,0 +1,11 @@
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Domain\bin\Debug\net8.0\EmployerJob.Domain.deps.json
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Domain\bin\Debug\net8.0\EmployerJob.Domain.dll
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Domain\bin\Debug\net8.0\EmployerJob.Domain.pdb
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Domain\obj\Debug\net8.0\EmployerJob.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Domain\obj\Debug\net8.0\EmployerJob.Domain.AssemblyInfoInputs.cache
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Domain\obj\Debug\net8.0\EmployerJob.Domain.AssemblyInfo.cs
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Domain\obj\Debug\net8.0\EmployerJob.Domain.csproj.CoreCompileInputs.cache
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Domain\obj\Debug\net8.0\EmployerJob.Domain.dll
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Domain\obj\Debug\net8.0\refint\EmployerJob.Domain.dll
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Domain\obj\Debug\net8.0\EmployerJob.Domain.pdb
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Domain\obj\Debug\net8.0\ref\EmployerJob.Domain.dll

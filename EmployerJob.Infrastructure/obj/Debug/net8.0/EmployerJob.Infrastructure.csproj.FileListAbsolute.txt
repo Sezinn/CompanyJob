@@ -1,0 +1,17 @@
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Infrastructure\bin\Debug\net8.0\EmployerJob.Infrastructure.deps.json
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Infrastructure\bin\Debug\net8.0\EmployerJob.Infrastructure.runtimeconfig.json
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Infrastructure\bin\Debug\net8.0\EmployerJob.Infrastructure.dll
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Infrastructure\bin\Debug\net8.0\EmployerJob.Infrastructure.pdb
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Infrastructure\bin\Debug\net8.0\EmployerJob.Domain.dll
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Infrastructure\bin\Debug\net8.0\EmployerJob.Domain.pdb
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Infrastructure\obj\Debug\net8.0\EmployerJob.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Infrastructure\obj\Debug\net8.0\EmployerJob.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Infrastructure\obj\Debug\net8.0\EmployerJob.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Infrastructure\obj\Debug\net8.0\EmployerJob.Infrastructure.AssemblyInfo.cs
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Infrastructure\obj\Debug\net8.0\EmployerJob.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Infrastructure\obj\Debug\net8.0\Employer.20094D87.Up2Date
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Infrastructure\obj\Debug\net8.0\EmployerJob.Infrastructure.dll
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Infrastructure\obj\Debug\net8.0\refint\EmployerJob.Infrastructure.dll
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Infrastructure\obj\Debug\net8.0\EmployerJob.Infrastructure.pdb
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Infrastructure\obj\Debug\net8.0\EmployerJob.Infrastructure.genruntimeconfig.cache
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Infrastructure\obj\Debug\net8.0\ref\EmployerJob.Infrastructure.dll

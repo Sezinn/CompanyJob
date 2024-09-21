@@ -1,0 +1,17 @@
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Application\bin\Debug\net8.0\EmployerJob.Application.deps.json
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Application\bin\Debug\net8.0\EmployerJob.Application.dll
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Application\bin\Debug\net8.0\EmployerJob.Application.pdb
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Application\bin\Debug\net8.0\EmployerJob.Domain.dll
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Application\bin\Debug\net8.0\EmployerJob.Infrastructure.dll
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Application\bin\Debug\net8.0\EmployerJob.Domain.pdb
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Application\bin\Debug\net8.0\EmployerJob.Infrastructure.pdb
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Application\obj\Debug\net8.0\EmployerJob.Application.csproj.AssemblyReference.cache
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Application\obj\Debug\net8.0\EmployerJob.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Application\obj\Debug\net8.0\EmployerJob.Application.AssemblyInfoInputs.cache
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Application\obj\Debug\net8.0\EmployerJob.Application.AssemblyInfo.cs
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Application\obj\Debug\net8.0\EmployerJob.Application.csproj.CoreCompileInputs.cache
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Application\obj\Debug\net8.0\Employer.68FC245E.Up2Date
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Application\obj\Debug\net8.0\EmployerJob.Application.dll
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Application\obj\Debug\net8.0\refint\EmployerJob.Application.dll
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Application\obj\Debug\net8.0\EmployerJob.Application.pdb
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.Application\obj\Debug\net8.0\ref\EmployerJob.Application.dll
