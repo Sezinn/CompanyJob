@@ -1,18 +1,22 @@
-﻿using EmployerJob.Application.Jobs.Queries;
+﻿using AutoMapper;
+using EmployerJob.Application.Jobs.Dtos;
+using EmployerJob.Application.Jobs.Queries;
 using EmployerJob.Infrastructure.Persistence.Repositories;
 using MediatR;
 using Nest;
 
 namespace EmployerJob.Application.Jobs.Handlers
 {
-    public class SearchJobsQueryHandler : IRequestHandler<SearchJobsQuery, IEnumerable<EmployerJob.Domain.Entities.Job>>
+    public class SearchJobsQueryHandler : IRequestHandler<SearchJobsQuery, IEnumerable<JobDto>>
     {
         private readonly IElasticClient _elasticClient;
-        public SearchJobsQueryHandler(IElasticClient elasticClient)
+        private readonly IMapper _mapper;
+        public SearchJobsQueryHandler(IElasticClient elasticClient, IMapper mapper)
         {
             _elasticClient = elasticClient;
+            _mapper = mapper;
         }
-        public async Task<IEnumerable<EmployerJob.Domain.Entities.Job>> Handle(SearchJobsQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<JobDto>> Handle(SearchJobsQuery request, CancellationToken cancellationToken)
         {
             var searchResponse = await _elasticClient.SearchAsync<EmployerJob.Domain.Entities.Job>(s => s
                 .Query(q => q
@@ -23,7 +27,7 @@ namespace EmployerJob.Application.Jobs.Handlers
                 )
             , cancellationToken);
 
-            return searchResponse.Documents;
+            return _mapper.Map<IEnumerable<JobDto>>(searchResponse?.Documents);
         }
     }
 }

@@ -104,6 +104,7 @@ C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.API\obj\Debug\net8.0
 C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.API\obj\Debug\net8.0\EmployerJob.API.csproj.CoreCompileInputs.cache
 C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.API\obj\Debug\net8.0\EmployerJob.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.API\obj\Debug\net8.0\EmployerJob.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.API\obj\Debug\net8.0\EmployerJob.API.sourcelink.json
 C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.API\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.API\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.API\obj\Debug\net8.0\staticwebassets\msbuild.EmployerJob.API.Microsoft.AspNetCore.StaticWebAssets.props
@@ -118,3 +119,16 @@ C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.API\obj\Debug\net8.0
 C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.API\obj\Debug\net8.0\EmployerJob.API.pdb
 C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.API\obj\Debug\net8.0\EmployerJob.API.genruntimeconfig.cache
 C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.API\obj\Debug\net8.0\ref\EmployerJob.API.dll
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.API\bin\Debug\net8.0\Dapper.dll
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.API\bin\Debug\net8.0\Hangfire.AspNetCore.dll
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.API\bin\Debug\net8.0\Hangfire.Core.dll
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.API\bin\Debug\net8.0\Hangfire.NetCore.dll
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.API\bin\Debug\net8.0\Hangfire.PostgreSql.dll
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.API\bin\Debug\net8.0\Hangfire.SqlServer.dll
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.API\bin\Debug\net8.0\Microsoft.Extensions.Caching.StackExchangeRedis.dll
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.API\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.API\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.API\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.API\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.API\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
+C:\Users\OnurToklu\source\repos\EmployerJob.API\EmployerJob.API\bin\Debug\net8.0\StackExchange.Redis.dll

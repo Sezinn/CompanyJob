@@ -1,8 +1,9 @@
-﻿using MediatR;
+﻿using EmployerJob.Application.Common.Models.BaseModels;
+using MediatR;
 
 namespace EmployerJob.Application.Jobs.Commands
 {
-    public class CreateJobCommand : IRequest<int>
+    public class CreateJobCommand : IRequest<BoolRef>
     {
         public int CompanyId { get; set; }
         public string Position { get; set; } // Zorunlu

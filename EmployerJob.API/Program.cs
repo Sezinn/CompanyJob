@@ -8,6 +8,8 @@ using EmployerJob.Infrastructure.Persistence.Context;
 using Nest;
 using EmployerJob.Infrastructure.Elasticsearch;
 using System.Text.Json.Serialization;
+using Hangfire;
+using EmployerJob.Application.Hangfire.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,10 +26,6 @@ builder.Services.AddControllers()
         config.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
     });
 
-// Configure PostgreSQL
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQL")));
-
 // Configure Elasticsearch
 builder.Services.AddSingleton<ElasticClientProvider>();
 builder.Services.AddSingleton<IElasticClient>(sp =>
@@ -36,23 +34,18 @@ builder.Services.AddSingleton<IElasticClient>(sp =>
     return provider.GetElasticClient();
 });
 
-// Register MediatR
-//builder.Services.AddMediatR(Assembly.GetExecutingAssembly(), typeof(CreateCompanyCommand).Assembly);
-//builder.Services.AddMediatR(Assembly.GetExecutingAssembly(), typeof(CreateCompanyCommandHandler).Assembly);
-
 // Register FluentValidation
 builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
-// CQRS ve MediatR ayarlarý
-//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateCompanyCommand).Assembly));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddInfrastructure(builder.Configuration.GetConnectionString("PostgreSQL"));
-builder.Services.AddApplication();
+builder.Services.AddInfrastructure(builder.Configuration.GetConnectionString("PostgreSQL"),builder.Configuration.GetConnectionString("Cache"));
 
+builder.Services.AddApplication();
+builder.Services.AddSingleton<JobService>();
 
 var app = builder.Build();
 
@@ -62,6 +55,18 @@ using (var scope = app.Services.CreateScope())
     var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
     db.Database.Migrate();
 }
+
+// Hangfire Dashboard ve Server'ý baþlat
+app.UseHangfireDashboard("/hangfire", new DashboardOptions()
+{
+    //PrefixPath = "/job",
+    DashboardTitle = "Hangfire Dashboard"
+});
+app.UseHangfireServer();
+
+// Zamanlanmýþ iþlerin baþlatýlmasý için DI ile JobService'yi kullan
+var jobService = app.Services.GetRequiredService<JobService>();
+jobService.RunOnceJob();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

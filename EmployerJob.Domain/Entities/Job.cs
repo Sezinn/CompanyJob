@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace EmployerJob.Domain.Entities
 {
-    public class Job
+    public class Job : BaseEntityModel, IEntity
     {
-        public int Id { get; set; }
         public string Position { get; set; } 
         public string Description { get; set; } 
         public DateTime PostedDate { get; set; }
@@ -17,7 +16,6 @@ namespace EmployerJob.Domain.Entities
         public string Benefits { get; set; } // Opsiyonel
         public string EmploymentType { get; set; } // Opsiyonel
         public string Salary { get; set; } // Opsiyonel
-        public bool IsActive { get; set; }
 
         // Foreign Key
         public int CompanyId { get; set; }

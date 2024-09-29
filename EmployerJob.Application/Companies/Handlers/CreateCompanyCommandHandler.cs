@@ -1,22 +1,20 @@
 ﻿using EmployerJob.Application.Companies.Commands;
-using EmployerJob.Infrastructure.Persistence.Context;
 using MediatR;
 using EmployerJob.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
 using EmployerJob.Infrastructure.Persistence.Repositories;
+using EmployerJob.Application.Common.Models.BaseModels;
 
 namespace EmployerJob.Application.Companies.Handlers
 {
-    public class CreateCompanyCommandHandler : IRequestHandler<CreateCompanyCommand, int>
+    public class CreateCompanyCommandHandler : IRequestHandler<CreateCompanyCommand, BoolRef>
     {
-        //private readonly ApplicationDbContext _context;
         private readonly ICompanyRepository _companyRepository;
         public CreateCompanyCommandHandler(ICompanyRepository companyRepository)
         {
             _companyRepository = companyRepository;
         }
 
-        public async Task<int> Handle(CreateCompanyCommand request, CancellationToken cancellationToken)
+        public async Task<BoolRef> Handle(CreateCompanyCommand request, CancellationToken cancellationToken)
         {
             // Telefon numarası benzersiz olmalı
             var existingCompany = await _companyRepository.GetByPhoneNumberAsync(request.PhoneNumber);
@@ -34,9 +32,9 @@ namespace EmployerJob.Application.Companies.Handlers
             };
 
             await _companyRepository.AddAsync(company);
-            await _companyRepository.SaveChangesAsync();
+            var result = await _companyRepository.SaveChangesAsync();
 
-            return company.Id;
+            return result ? new BoolRef(true) : throw new Exception("İşveren kaydedilemedi."); ;
         }
     }
 }

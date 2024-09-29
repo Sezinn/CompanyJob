@@ -1,40 +1,38 @@
-﻿using EmployerJob.Application.Companies.Commands;
+﻿using EmployerJob.Application.Common.Models.BaseModels;
+using EmployerJob.Application.Companies.Commands;
+using EmployerJob.Application.Companies.Dtos;
 using EmployerJob.Application.Companies.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace EmployerJob.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class CompaniesController : ControllerBase
+    public class CompaniesController : BaseController
     {
-        private readonly IMediator _mediator;
-
+        protected readonly IMediator mediator;
         public CompaniesController(IMediator mediator)
         {
-            _mediator = mediator;
+            this.mediator = mediator;
         }
 
         [HttpPost]
-        public async Task<IActionResult> RegisterCompany([FromBody] CreateCompanyCommand command)
+        public async Task<BaseResponse<BoolRef>> RegisterCompany(CreateCompanyCommand command)
         {
-            try
-            {
-                var companyId = await _mediator.Send(command);
-                return CreatedAtAction(nameof(GetCompanies), new { id = companyId }, new { id = companyId });
-            }
-            catch (ArgumentException ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
+            var result = await mediator.Send(command);
+            var httpResponse = result?.Result == true ? HttpStatusCode.OK : HttpStatusCode.BadRequest;
+            return CreateDefaultResponse(result, httpResponse);
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetCompanies()
+        public async Task<BaseResponse<IEnumerable<CompanyDto>>> GetCompanies()
         {
-            var companies = await _mediator.Send(new GetAllCompaniesQuery());
-            return Ok(companies);
+            var result = await mediator.Send(new GetAllCompaniesQuery());
+            var httpResponse = result?.Any() == true ? HttpStatusCode.OK : HttpStatusCode.NotFound;
+            return result != null ? CreateDefaultResponse(result, HttpStatusCode.OK) :
+                                       CreateDefaultResponse<IEnumerable<CompanyDto>>(null, HttpStatusCode.NotFound);
         }
     }
 }

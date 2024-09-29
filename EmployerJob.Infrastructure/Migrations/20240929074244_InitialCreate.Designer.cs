@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EmployerJob.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240920184213__InitialCreate_2")]
-    partial class _InitialCreate_2
+    [Migration("20240929074244_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,8 +41,20 @@ namespace EmployerJob.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("boolean");
+
                     b.Property<int>("JobPostingCredits")
                         .HasColumnType("integer");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
@@ -61,6 +73,9 @@ namespace EmployerJob.Infrastructure.Migrations
                             Id = 1,
                             Address = "İstanbul",
                             CompanyName = "Experilabs",
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = false,
+                            IsDelete = false,
                             JobPostingCredits = 2,
                             PhoneNumber = "5555555555"
                         });
@@ -81,6 +96,9 @@ namespace EmployerJob.Infrastructure.Migrations
                     b.Property<int>("CompanyId")
                         .HasColumnType("integer");
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("text");
@@ -94,6 +112,12 @@ namespace EmployerJob.Infrastructure.Migrations
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Position")
                         .IsRequired()
@@ -121,12 +145,14 @@ namespace EmployerJob.Infrastructure.Migrations
                             Id = 1,
                             Benefits = "",
                             CompanyId = 1,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Yazılım geliştirme uzmanı aramaktayız. Max 5 yıl tecrübesi olan, .Net Core ile proje geliştirmiş olması tercih sebebidir.",
                             EmploymentType = "Part Time",
-                            ExpirationDate = new DateTime(2024, 10, 20, 18, 42, 13, 120, DateTimeKind.Utc).AddTicks(4759),
+                            ExpirationDate = new DateTime(2024, 10, 29, 7, 42, 43, 964, DateTimeKind.Utc).AddTicks(2485),
                             IsActive = true,
+                            IsDelete = false,
                             Position = "Developer",
-                            PostedDate = new DateTime(2024, 9, 20, 18, 42, 13, 120, DateTimeKind.Utc).AddTicks(4756),
+                            PostedDate = new DateTime(2024, 9, 29, 7, 42, 43, 964, DateTimeKind.Utc).AddTicks(2481),
                             QualityScore = 3,
                             Salary = "100000 TL"
                         });

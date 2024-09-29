@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace EmployerJob.Domain.Entities
 {
-    public class Company
+    public class Company : BaseEntityModel, IEntity
     {
-        public int Id { get; set; }
         public string PhoneNumber { get; set; } // Zorunlu
         public string CompanyName { get; set; } // Zorunlu
         public string Address { get; set; } // Zorunlu

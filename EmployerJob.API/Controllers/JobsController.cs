@@ -1,53 +1,46 @@
-﻿using EmployerJob.Application.Jobs.Commands;
+﻿using EmployerJob.Application.Common.Models.BaseModels;
+using EmployerJob.Application.Jobs.Commands;
+using EmployerJob.Application.Jobs.Dtos;
 using EmployerJob.Application.Jobs.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace EmployerJob.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class JobsController : ControllerBase
+    public class JobsController : BaseController
     {
-        private readonly IMediator _mediator;
-
+        protected readonly IMediator mediator;
         public JobsController(IMediator mediator)
         {
-            _mediator = mediator;
+            this.mediator = mediator;
         }
 
         [HttpPost("{companyId}")]
-        public async Task<IActionResult> CreateJob(int companyId, [FromBody] CreateJobCommand command)
+        public async Task<BaseResponse<BoolRef>> CreateJob(CreateJobCommand command)
         {
-            try
-            {
-                command.CompanyId = companyId;
-                var jobId = await _mediator.Send(command);
-                return CreatedAtAction(nameof(GetJobs), new { id = jobId }, new { id = jobId });
-            }
-            catch (ArgumentException ex)
-            {
-                return NotFound(new { message = ex.Message });
-            }
-            catch (InvalidOperationException ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
+            var result = await mediator.Send(command);
+            var httpResponse = result?.Result == true ? HttpStatusCode.OK : HttpStatusCode.BadRequest;
+            return CreateDefaultResponse(result, httpResponse);
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetJobs()
+        public async Task<BaseResponse<IEnumerable<JobDto>>> GetJobs()
         {
-            var jobs = await _mediator.Send(new GetAllJobsQuery());
-            return Ok(jobs);
+            var result = await mediator.Send(new GetAllJobsQuery());
+            var httpResponse = result?.Any() == true ? HttpStatusCode.OK : HttpStatusCode.NotFound;
+            return result != null ? CreateDefaultResponse(result, HttpStatusCode.OK) :
+                                       CreateDefaultResponse<IEnumerable<JobDto>>(null, HttpStatusCode.NotFound);
         }
 
         [HttpGet("search")]
-        public async Task<IActionResult> SearchJobs([FromQuery] DateTime expirationDate)
+        public async Task<BaseResponse<IEnumerable<JobDto>>> SearchJobs(SearchJobsQuery query)
         {
-            var query = new SearchJobsQuery { ExpirationDate = expirationDate };
-            var jobs = await _mediator.Send(query);
-            return Ok(jobs);
+            var result = await mediator.Send(query);
+            return result != null ? CreateDefaultResponse(result, HttpStatusCode.OK) :
+                                       CreateDefaultResponse<IEnumerable<JobDto>>(null, HttpStatusCode.NotFound);
         }
     }
 }

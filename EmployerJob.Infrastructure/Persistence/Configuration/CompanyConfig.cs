@@ -32,7 +32,7 @@ namespace EmployerJob.Infrastructure.Persistence.Configuration
                     PhoneNumber = "5555555555",
                     Address = "İstanbul",
                     CompanyName = "Experilabs",
-                    JobPostingCredits = 2
+                    JobPostingCredits = 2,
                 }
             };
         }

@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EmployerJob.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class _InitialCreate_2 : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -21,7 +21,11 @@ namespace EmployerJob.Infrastructure.Migrations
                     PhoneNumber = table.Column<string>(type: "text", nullable: false),
                     CompanyName = table.Column<string>(type: "text", nullable: false),
                     Address = table.Column<string>(type: "text", nullable: false),
-                    JobPostingCredits = table.Column<int>(type: "integer", nullable: false)
+                    JobPostingCredits = table.Column<int>(type: "integer", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    IsActive = table.Column<bool>(type: "boolean", nullable: false),
+                    IsDelete = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,8 +46,11 @@ namespace EmployerJob.Infrastructure.Migrations
                     Benefits = table.Column<string>(type: "text", nullable: false),
                     EmploymentType = table.Column<string>(type: "text", nullable: false),
                     Salary = table.Column<string>(type: "text", nullable: false),
+                    CompanyId = table.Column<int>(type: "integer", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     IsActive = table.Column<bool>(type: "boolean", nullable: false),
-                    CompanyId = table.Column<int>(type: "integer", nullable: false)
+                    IsDelete = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -58,13 +65,13 @@ namespace EmployerJob.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "Companies",
-                columns: new[] { "Id", "Address", "CompanyName", "JobPostingCredits", "PhoneNumber" },
-                values: new object[] { 1, "İstanbul", "Experilabs", 2, "5555555555" });
+                columns: new[] { "Id", "Address", "CompanyName", "CreatedDate", "IsActive", "IsDelete", "JobPostingCredits", "ModifiedDate", "PhoneNumber" },
+                values: new object[] { 1, "İstanbul", "Experilabs", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, false, 2, null, "5555555555" });
 
             migrationBuilder.InsertData(
                 table: "Jobs",
-                columns: new[] { "Id", "Benefits", "CompanyId", "Description", "EmploymentType", "ExpirationDate", "IsActive", "Position", "PostedDate", "QualityScore", "Salary" },
-                values: new object[] { 1, "", 1, "Yazılım geliştirme uzmanı aramaktayız. Max 5 yıl tecrübesi olan, .Net Core ile proje geliştirmiş olması tercih sebebidir.", "Part Time", new DateTime(2024, 10, 20, 18, 42, 13, 120, DateTimeKind.Utc).AddTicks(4759), true, "Developer", new DateTime(2024, 9, 20, 18, 42, 13, 120, DateTimeKind.Utc).AddTicks(4756), 3, "100000 TL" });
+                columns: new[] { "Id", "Benefits", "CompanyId", "CreatedDate", "Description", "EmploymentType", "ExpirationDate", "IsActive", "IsDelete", "ModifiedDate", "Position", "PostedDate", "QualityScore", "Salary" },
+                values: new object[] { 1, "", 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Yazılım geliştirme uzmanı aramaktayız. Max 5 yıl tecrübesi olan, .Net Core ile proje geliştirmiş olması tercih sebebidir.", "Part Time", new DateTime(2024, 10, 29, 7, 42, 43, 964, DateTimeKind.Utc).AddTicks(2485), true, false, null, "Developer", new DateTime(2024, 9, 29, 7, 42, 43, 964, DateTimeKind.Utc).AddTicks(2481), 3, "100000 TL" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Companies_PhoneNumber",
