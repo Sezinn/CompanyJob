@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using EmployerJob.Application.Jobs.Dtos;
 using EmployerJob.Application.Jobs.Queries;
-using EmployerJob.Infrastructure.Persistence.Repositories;
 using MediatR;
 using Nest;
 
