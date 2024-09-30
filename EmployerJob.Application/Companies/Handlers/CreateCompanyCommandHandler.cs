@@ -3,6 +3,9 @@ using MediatR;
 using EmployerJob.Domain.Entities;
 using EmployerJob.Infrastructure.Persistence.Repositories;
 using EmployerJob.Application.Common.Models.BaseModels;
+using EmployerJob.Application.Common.Models.Enums;
+using EmployerJob.Application.Utilities.Exceptions;
+using EmployerJob.Application.Constants;
 
 namespace EmployerJob.Application.Companies.Handlers
 {
@@ -19,9 +22,7 @@ namespace EmployerJob.Application.Companies.Handlers
             // Telefon numarası benzersiz olmalı
             var existingCompany = await _companyRepository.GetByPhoneNumberAsync(request.PhoneNumber);
             if (existingCompany != null)
-            {
-                throw new ArgumentException("Bu telefon numarası zaten kayıtlı.");
-            }
+                throw new BadRequestException(ResponseCode.Exception, ErrorMessageConstant.phonenumberalreadyexist);
 
             var company = new Company
             {
@@ -34,7 +35,7 @@ namespace EmployerJob.Application.Companies.Handlers
             await _companyRepository.AddAsync(company);
             var result = await _companyRepository.SaveChangesAsync();
 
-            return result ? new BoolRef(true) : throw new Exception("İşveren kaydedilemedi."); ;
+            return result ? new BoolRef(true) : throw new BadRequestException(ResponseCode.Exception, ErrorMessageConstant.companynotcreated); 
         }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using EmployerJob.Application.Common.Models.BaseModels;
+using EmployerJob.Application.Common.Models.Enums;
+using EmployerJob.Application.Constants;
 using EmployerJob.Application.Jobs.Commands;
 using EmployerJob.Application.Redis;
-using EmployerJob.Infrastructure.Persistence.Context;
+using EmployerJob.Application.Utilities.Exceptions;
 using EmployerJob.Infrastructure.Persistence.Repositories;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -30,10 +32,10 @@ namespace EmployerJob.Application.Jobs.Handlers
         {
             var company = await _companyRepository.GetByIdAsync(request.CompanyId);
             if (company == null)
-                throw new ArgumentException("İşveren bulunamadı.");
+                throw new NotFoundException(ResponseCode.Exception, ErrorMessageConstant.companynotfound);
 
             if (company.JobPostingCredits <= 0)
-                throw new InvalidOperationException("İlan yayınlama hakkınız kalmamıştır.");
+                throw new BadRequestException(ResponseCode.Exception, ErrorMessageConstant.jobnotpublished); 
 
             // İlan haklarını azalt
             company.JobPostingCredits -= 1;
@@ -65,7 +67,7 @@ namespace EmployerJob.Application.Jobs.Handlers
             // Elasticsearch'e ekleme
             await _elasticClient.IndexDocumentAsync(job, cancellationToken);
 
-            return result ? new BoolRef(true) : throw new Exception("İlanınız kaydedilemedi.");
+            return result ? new BoolRef(true) : throw new BadRequestException(ResponseCode.Exception, ErrorMessageConstant.jobnotcreated);
         }
         private int CalculateQualityScore(CreateJobCommand dto, bool hasProhibitedWord)
         {

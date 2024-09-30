@@ -1,4 +1,5 @@
-﻿using EmployerJob.Application.Common.Models.BaseModels;
+﻿using EmployerJob.API.Controllers.Base;
+using EmployerJob.Application.Common.Models.BaseModels;
 using EmployerJob.Application.Jobs.Commands;
 using EmployerJob.Application.Jobs.Dtos;
 using EmployerJob.Application.Jobs.Queries;
@@ -14,7 +15,7 @@ namespace EmployerJob.API.Controllers
     {
         public JobsController(IMediator mediator) : base(mediator) { }
 
-        [HttpPost("{companyId}")]
+        [HttpPost]
         public async Task<BaseResponse<BoolRef>> CreateJob(CreateJobCommand command)
         {
             var result = await mediator.Send(command);

@@ -1,4 +1,5 @@
-﻿using EmployerJob.Application.Common.Models.BaseModels;
+﻿using EmployerJob.API.Controllers.Base;
+using EmployerJob.Application.Common.Models.BaseModels;
 using EmployerJob.Application.Companies.Commands;
 using EmployerJob.Application.ProhibitedWords.Commands;
 using MediatR;

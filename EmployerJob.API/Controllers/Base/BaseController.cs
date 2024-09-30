@@ -3,7 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace EmployerJob.API.Controllers
+namespace EmployerJob.API.Controllers.Base
 {
     public class BaseController : ControllerBase
     {
