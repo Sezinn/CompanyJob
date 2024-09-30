@@ -1,20 +1,21 @@
-﻿using Hangfire;
+﻿using EmployerJob.Application.Hangfire.Services.Jobs;
+using Hangfire;
+using Microsoft.Extensions.Configuration;
 using System;
 
 namespace EmployerJob.Application.Hangfire.Services
 {
-    public class JobService
+    public static class JobService
     {
-        public void ScheduleJob()
+        public static void GetProhibitedWords(IConfiguration configuration)
         {
-            // Örneğin her dakika çalışacak bir job ayarlayabilirsiniz
-            //RecurringJob.AddOrUpdate("example-job", () => Console.WriteLine("This is a scheduled job!"), Cron.Minutely);
-        }
+            var jobActive = configuration.GetValue<bool>("ScheduleJobStatus:GetProhibitedWords");
 
-        public void RunOnceJob()
-        {
-            // Bir defa çalışacak bir job
-            BackgroundJob.Enqueue(() => Console.WriteLine("This job runs once!"));
+            if (jobActive)
+            {
+                RecurringJob.AddOrUpdate<IHangfireJobService>(nameof(GetProhibitedWords),
+                                              (service) => service.GetProhibitedWords(), configuration.GetValue<string>("CronScheduleConfig:GetProhibitedWords"));
+            }
         }
     }
 }

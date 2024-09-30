@@ -12,11 +12,7 @@ namespace EmployerJob.API.Controllers
     [Route("api/[controller]")]
     public class JobsController : BaseController
     {
-        protected readonly IMediator mediator;
-        public JobsController(IMediator mediator)
-        {
-            this.mediator = mediator;
-        }
+        public JobsController(IMediator mediator) : base(mediator) { }
 
         [HttpPost("{companyId}")]
         public async Task<BaseResponse<BoolRef>> CreateJob(CreateJobCommand command)
@@ -36,9 +32,9 @@ namespace EmployerJob.API.Controllers
         }
 
         [HttpGet("search")]
-        public async Task<BaseResponse<IEnumerable<JobDto>>> SearchJobs(SearchJobsQuery query)
+        public async Task<BaseResponse<IEnumerable<JobDto>>> SearchJobs(DateTime expirationDate)
         {
-            var result = await mediator.Send(query);
+            var result = await mediator.Send(new SearchJobsQuery() { ExpirationDate = expirationDate });
             return result != null ? CreateDefaultResponse(result, HttpStatusCode.OK) :
                                        CreateDefaultResponse<IEnumerable<JobDto>>(null, HttpStatusCode.NotFound);
         }

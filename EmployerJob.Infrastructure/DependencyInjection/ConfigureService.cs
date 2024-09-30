@@ -9,11 +9,11 @@ namespace EmployerJob.Infrastructure.DependencyInjection
 {
     public static class ConfigureService
     {
-        public static IServiceCollection AddInfrastructure(this IServiceCollection services, string connectionString, string redisConnectionString)
+        public static IServiceCollection AddInfrastructure(this IServiceCollection services, string connectionString)
         {
             services.AddDbContext<Persistence.Context.ApplicationDbContext>(options =>
                 options.UseNpgsql(connectionString));
-            services.AddStackExchangeRedisCache(options => options.Configuration = redisConnectionString);
+            //services.AddStackExchangeRedisCache(options => options.Configuration = redisConnectionString);
 
             services.AddHangfire(config =>
             {

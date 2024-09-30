@@ -12,11 +12,7 @@ namespace EmployerJob.API.Controllers
     [Route("api/[controller]")]
     public class CompaniesController : BaseController
     {
-        protected readonly IMediator mediator;
-        public CompaniesController(IMediator mediator)
-        {
-            this.mediator = mediator;
-        }
+        public CompaniesController(IMediator mediator) : base(mediator) { }
 
         [HttpPost]
         public async Task<BaseResponse<BoolRef>> RegisterCompany(CreateCompanyCommand command)

@@ -145,13 +145,42 @@ namespace EmployerJob.Infrastructure.Migrations
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Yazılım geliştirme uzmanı aramaktayız. Max 5 yıl tecrübesi olan, .Net Core ile proje geliştirmiş olması tercih sebebidir.",
                             EmploymentType = "Part Time",
-                            ExpirationDate = new DateTime(2024, 10, 29, 7, 42, 43, 964, DateTimeKind.Utc).AddTicks(2485),
+                            ExpirationDate = new DateTime(2024, 10, 29, 22, 54, 48, 499, DateTimeKind.Utc).AddTicks(7863),
                             IsActive = true,
                             IsDelete = false,
                             Position = "Developer",
-                            PostedDate = new DateTime(2024, 9, 29, 7, 42, 43, 964, DateTimeKind.Utc).AddTicks(2481),
+                            PostedDate = new DateTime(2024, 9, 29, 22, 54, 48, 499, DateTimeKind.Utc).AddTicks(7860),
                             QualityScore = 3,
                             Salary = "100000 TL"
+                        });
+                });
+
+            modelBuilder.Entity("EmployerJob.Domain.Entities.ProhibitedWord", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Word")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProhibitedWords", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Word = "sakıncalı1"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Word = "sakıncalı2"
                         });
                 });
 

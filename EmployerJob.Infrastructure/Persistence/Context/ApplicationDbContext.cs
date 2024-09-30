@@ -10,13 +10,13 @@ namespace EmployerJob.Infrastructure.Persistence.Context
 
         public DbSet<Company> Companies { get; set; }
         public DbSet<Job> Jobs { get; set; }
-        //public DbSet<ProhibitedWord> ProhibitedWords { get; set; }
+        public DbSet<ProhibitedWord> ProhibitedWords { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new CompanyConfig());
             modelBuilder.ApplyConfiguration(new JobConfig());
-            //modelBuilder.ApplyConfiguration(new ProhibitedWordConfig());
+            modelBuilder.ApplyConfiguration(new ProhibitedWordConfig());
         }
     }
 }

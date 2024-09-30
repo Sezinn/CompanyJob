@@ -18,7 +18,9 @@ namespace EmployerJob.Infrastructure.Elasticsearch
                 .DefaultIndex("jobs")
                 .DefaultMappingFor<EmployerJob.Domain.Entities.Job>(m => m
                     .IdProperty(j => j.Id)
-                );
+                )
+                .DisableDirectStreaming()
+                .PrettyJson();
 
             var client = new ElasticClient(settings);
 

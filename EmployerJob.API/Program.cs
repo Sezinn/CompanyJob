@@ -9,7 +9,10 @@ using Nest;
 using EmployerJob.Infrastructure.Elasticsearch;
 using System.Text.Json.Serialization;
 using Hangfire;
+using EmployerJob.Application.Redis;
+using EmployerJob.Application.Hangfire.Services.Jobs;
 using EmployerJob.Application.Hangfire.Services;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,10 +45,18 @@ builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddInfrastructure(builder.Configuration.GetConnectionString("PostgreSQL"),builder.Configuration.GetConnectionString("Cache"));
+builder.Services.AddInfrastructure(builder.Configuration.GetConnectionString("PostgreSQL"));
+
+builder.Services.AddSingleton<IRedisContext>(sp =>
+{
+    var redis = new RedisContext(builder.Configuration.GetConnectionString("Cache"));
+    redis.Connect();
+    return redis;
+});
 
 builder.Services.AddApplication();
-builder.Services.AddSingleton<JobService>();
+builder.Services.AddScoped<IHangfireJobService, HangfireJobService>();
+//builder.Services.AddSingleton<JobService>();
 
 var app = builder.Build();
 
@@ -65,8 +76,9 @@ app.UseHangfireDashboard("/hangfire", new DashboardOptions()
 app.UseHangfireServer();
 
 // Zamanlanmýþ iþlerin baþlatýlmasý için DI ile JobService'yi kullan
-var jobService = app.Services.GetRequiredService<JobService>();
-jobService.RunOnceJob();
+//var jobService = app.Services.GetRequiredService<JobService>();
+//jobService.RunOnceJob();
+JobService.GetProhibitedWords(builder.Configuration);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
